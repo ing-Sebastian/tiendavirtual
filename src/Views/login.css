@@ -3,5 +3,34 @@
  */
 
 .mainFxmlClass {
+    .root{
 
+    }
+
+}
+
+.form_panel{
+    -fx-background-radius: 40;
+    -fx-background-color:#400A0A;
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-color:#FF0000;
+    -fx-border-radius: 40;
+}
+
+.image_panel_login{
+    -fx-background-radius: 40;
+    -fx-background-color: none;
+    -fx-background-size: cover;
+    -fx-border-style: solid;
+    -fx-border-width: 4;
+    -fx-border-color:#FF0000;
+    -fx-border-radius: 40;
+}
+
+.text_field_login{
+    -fx-background-color:#170404;
+    -fx-border-color:#DC2626;
+    -fx-border-radius: 2%;
+    -fx-color: #ffffff;
 }

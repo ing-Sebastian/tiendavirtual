@@ -1,10 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="1000" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="ControllersViews.LoginController">
-    <stylesheets>
-        <URL value="@login.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="1000" styleClass="root" stylesheets="@login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllersViews.LoginController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1009.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../Images/background_login.png" />
+         </image>
+      </ImageView>
+      <Pane id="form_panel" layoutX="70.0" layoutY="59.0" prefHeight="472.0" prefWidth="358.0" styleClass="form_panel" stylesheets="@login.css">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutY="10.0" prefHeight="452.0" prefWidth="358.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/logo_login.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label text="ESTILO 360" textFill="#ff1919">
+                           <font>
+                              <Font name="Segoe UI" size="39.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="15.0" prefWidth="200.0">
+                     <children>
+                        <Label text="¡Transforma tu cuerpo, transforma tu vida!" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Email" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="35.0" prefWidth="287.0" promptText="juanperez@gmail.com" styleClass="text_field_login" stylesheets="@login.css">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="15.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Contraseña" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                     <children>
+                        <PasswordField prefHeight="35.0" prefWidth="286.0" promptText="****************" styleClass="text_field_login" stylesheets="@login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: C60909;" text="Iniciar sesión" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="15.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="¿Aun no tienes cuenta?" textFill="WHITE">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="90.0" right="90.0" top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: ffffff;" text="Regístrate" textFill="#dc0505">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></Pane>
+      <Pane id="image_panel_login" layoutX="470.0" layoutY="65.0" prefHeight="467.0" prefWidth="451.0" styleClass="image_panel_login" stylesheets="@login.css">
+         <children>
+            <ImageView id="image_login" fx:id="imageView" fitHeight="457.0" fitWidth="442.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <image>
+                  <Image url="@../Images/image_login.jpeg" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </children>
 </AnchorPane>

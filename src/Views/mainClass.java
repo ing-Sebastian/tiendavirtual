@@ -4,6 +4,7 @@
  */
 package Views;
 
+import ControllersViews.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
  * @author Sebastian Perez
  */
 public class mainClass extends Application{
-    
+        
     public static void main(String[] args){
         launch(args);
     }
@@ -25,7 +26,9 @@ public class mainClass extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
         stage.setTitle("Login");
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
+        stage.setScene(scene);
         stage.show();
     }
 }
