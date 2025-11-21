@@ -72,7 +72,7 @@
                         <Insets left="40.0" right="40.0" />
                      </VBox.margin>
                      <children>
-                        <TextField prefHeight="35.0" prefWidth="287.0" promptText="juanperez@gmail.com" styleClass="text_field_login" stylesheets="@login.css">
+                        <TextField fx:id="jtfEmail" prefHeight="35.0" prefWidth="287.0" promptText="juanperez@gmail.com" styleClass="text_field_login" stylesheets="@login.css">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -96,7 +96,7 @@
                         <Insets left="40.0" right="40.0" />
                      </VBox.margin>
                      <children>
-                        <PasswordField prefHeight="35.0" prefWidth="286.0" promptText="****************" styleClass="text_field_login" stylesheets="@login.css" />
+                        <PasswordField fx:id="jtfContraseña" prefHeight="35.0" prefWidth="286.0" promptText="****************" styleClass="text_field_login" stylesheets="@login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
@@ -104,7 +104,7 @@
                         <Insets left="40.0" right="40.0" top="30.0" />
                      </VBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: C60909;" text="Iniciar sesión" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: C60909;" text="Iniciar sesión" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="14.0" />
                            </font>
@@ -128,7 +128,7 @@
                         <Insets left="90.0" right="90.0" top="5.0" />
                      </VBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: ffffff;" text="Regístrate" textFill="#dc0505">
+                        <Button fx:id="btnRegistrar" mnemonicParsing="false" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: ffffff;" text="Regístrate" textFill="#dc0505">
                            <font>
                               <Font name="Segoe UI Bold" size="12.0" />
                            </font>

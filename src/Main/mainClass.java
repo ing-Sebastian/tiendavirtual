@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Views;
+package Main;
 
 import ControllersViews.*;
 import javafx.application.Application;
@@ -23,11 +23,11 @@ public class mainClass extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/Login.fxml"));
         
         stage.setTitle("Login");
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("login.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Styles/login.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

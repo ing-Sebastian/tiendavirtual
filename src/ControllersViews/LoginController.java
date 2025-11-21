@@ -10,10 +10,17 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import Controllers.ControllerUsuario;
+import Models.Usuario;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -22,8 +29,46 @@ import javafx.scene.shape.Rectangle;
  */
 public class LoginController implements Initializable {
     
+    private ControllerUsuario controlador = new ControllerUsuario();
+    
     @FXML
     private ImageView imageView;
+    
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    private Button btnRegistrar;
+
+    @FXML
+    private PasswordField jtfContraseña;
+
+    @FXML
+    private TextField jtfEmail;
+    
+    ///////////////////////////////////////////
+    @FXML
+    private void iniciarSesion(ActionEvent event) {
+
+        String correo = jtfEmail.getText();
+        String contraseña = jtfContraseña.getText();
+
+        Usuario u = controlador.login(correo, contraseña);
+
+        Alert alerta;
+
+        if (u != null) {
+            alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setHeaderText(null);
+            alerta.setContentText("Bienvenido " + u.nombre);
+            alerta.showAndWait();
+        } else {
+            alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setHeaderText(null);
+            alerta.setContentText("Correo o contraseña incorrectos");
+            alerta.showAndWait();
+        }
+    }
     
     /**
      * Initializes the controller class.
@@ -46,5 +91,5 @@ public class LoginController implements Initializable {
         // store the rounded image in the imageView.
         imageView.setImage(image);
     }    
-    
+ 
 }
