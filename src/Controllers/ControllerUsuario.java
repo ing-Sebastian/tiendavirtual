@@ -6,8 +6,8 @@ package Controllers;
 
 import Models.Nodo;
 import Models.Usuario;
+import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -39,9 +39,8 @@ public class ControllerUsuario {
         return null;
     }
     
-    /*
     //metodo registrar usuario
-    public boolean registrarUsuario(JTextField jtfNombre, JTextField jtfCorreo, JTextField jtfContraseña) {
+    public boolean registrarUsuario(TextField jtfNombre, TextField jtfCorreo, TextField jtfContraseña) {
 
         try {
             //validaciones, trim es para quitar espacios vacios
@@ -96,7 +95,6 @@ public class ControllerUsuario {
             return false;
         }
     }
-    */
     
     /*
     //eliminar por corre

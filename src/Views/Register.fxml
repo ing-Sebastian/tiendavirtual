@@ -14,16 +14,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="1000" styleClass="root" stylesheets="@login.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllersViews.LoginController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllersViews.LoginController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="1009.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="600.0" fitWidth="1009.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/background_login.png" />
          </image>
       </ImageView>
-      <Pane id="form_panel" layoutX="70.0" layoutY="59.0" prefHeight="472.0" prefWidth="358.0" styleClass="form_panel" stylesheets="@login.css">
+      <Pane id="form_panel" layoutX="80.0" layoutY="16.0" prefHeight="564.0" prefWidth="358.0" styleClass="form_panel" stylesheets="@login.css">
          <children>
-            <VBox alignment="TOP_CENTER" layoutY="10.0" prefHeight="452.0" prefWidth="358.0">
+            <VBox alignment="TOP_CENTER" layoutY="10.0" prefHeight="554.0" prefWidth="358.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                      <VBox.margin>
@@ -57,10 +58,10 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets left="40.0" right="40.0" top="30.0" />
+                        <Insets left="40.0" right="40.0" top="20.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Email" textFill="WHITE">
+                        <Label text="Ingrese email" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI Bold" size="12.0" />
                            </font>
@@ -84,7 +85,7 @@
                         <Insets left="40.0" right="40.0" top="15.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Contraseña" textFill="WHITE">
+                        <Label text="Crea una contraseña" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI Bold" size="12.0" />
                            </font>
@@ -99,12 +100,36 @@
                         <PasswordField fx:id="jtfContraseña" prefHeight="35.0" prefWidth="286.0" promptText="****************" styleClass="text_field_login" stylesheets="@login.css" />
                      </children>
                   </HBox>
+                  <HBox layoutX="50.0" layoutY="257.0" prefHeight="20.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Ingrese nombre" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="jtfNombre" prefHeight="35.0" prefWidth="287.0" promptText="Juan Perez" styleClass="text_field_login" stylesheets="@login.css">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="40.0" right="40.0" top="30.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: C60909;" text="Iniciar sesión" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#registrar" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: C60909;" text="Registrar" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="14.0" />
                            </font>
@@ -115,20 +140,13 @@
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
-                     <children>
-                        <Label text="¿Aun no tienes cuenta?" textFill="WHITE">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                        </Label>
-                     </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="90.0" right="90.0" top="5.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#switchToRegistrar" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: ffffff;" text="Regístrate" textFill="#dc0505">
+                        <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="23.0" prefWidth="102.0" style="-fx-background-color: ffffff;" text="Volver atrás" textFill="#dc0505">
                            <font>
                               <Font name="Segoe UI Bold" size="12.0" />
                            </font>
@@ -137,8 +155,9 @@
                   </HBox>
                </children>
             </VBox>
-         </children></Pane>
-      <Pane id="image_panel_login" layoutX="470.0" layoutY="65.0" prefHeight="467.0" prefWidth="451.0" styleClass="image_panel_login" stylesheets="@login.css">
+         </children>
+      </Pane>
+      <Pane id="image_panel_login" layoutX="480.0" layoutY="75.0" prefHeight="467.0" prefWidth="451.0" styleClass="image_panel_login" stylesheets="@login.css">
          <children>
             <ImageView id="image_login" fx:id="imageView" fitHeight="457.0" fitWidth="442.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true">
                <viewport>
@@ -148,6 +167,7 @@
                   <Image url="@../Images/image_login.jpeg" />
                </image>
             </ImageView>
-         </children></Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
