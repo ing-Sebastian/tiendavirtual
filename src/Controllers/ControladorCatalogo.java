@@ -8,12 +8,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import Models.Nodo;
 import Models.Productos;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 /**
  *
  * @author sebas, samuel, mayra
  */
 public class ControladorCatalogo {
+    
+    String rutaArchivo = System.getProperty("user.dir") + "/txtFiles/productos.txt";
+    
     //lista Productos
     public Nodo<Productos> inicio;
     public Nodo<Productos> fin;
@@ -21,6 +29,9 @@ public class ControladorCatalogo {
     public ControladorCatalogo() {
         inicio = null;
         fin = null;
+        /*
+        cargarDesdeTXT();
+        */
     }
     
     //revisar si es vacia
@@ -189,4 +200,281 @@ public class ControladorCatalogo {
         JOptionPane.showMessageDialog(null, msj);
     }
 
+    //metodos txt
+    //guardar
+    public void guardarEnTXT() {
+        if (listaVacia()) {
+            JOptionPane.showMessageDialog(null, "No hay productos para guardar");
+            return;
+        }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+
+            Nodo<Productos> p = inicio;
+
+            do {
+                writer.write("ID: " + p.dato.idProd);
+                writer.newLine();
+                writer.write("Nombre: " + p.dato.nombre);
+                writer.newLine();
+                writer.write("Precio: " + p.dato.precio);
+                writer.newLine();
+                writer.write("Descripción: " + p.dato.descripcion);
+                writer.newLine();
+                writer.write("Imagen: " + p.dato.nombreImagen);
+                writer.newLine();
+                writer.write("---------------------------");
+                writer.newLine();
+
+                p = p.sig;
+            } while (p != inicio);
+
+            writer.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar: " + e.getMessage());
+        }
+    }
+
+    //metodo cargar
+    public void cargarDesdeTXT() {
+        try {
+            File archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea;
+
+            String id = "", nombre = "", precio = "", descripcion = "", imagen = "";
+
+            while ((linea = reader.readLine()) != null) {
+
+                if (linea.startsWith("ID: ")) {
+                    id = linea.substring(4).trim();
+                } else if (linea.startsWith("Nombre: ")) {
+                    nombre = linea.substring(8).trim();
+                } else if (linea.startsWith("Precio: ")) {
+                    precio = linea.substring(8).trim();
+                } else if (linea.startsWith("Descripción: ")) {
+                    descripcion = linea.substring(13).trim();
+                } else if (linea.startsWith("Imagen: ")) {
+                    imagen = linea.substring(8).trim();
+                }
+
+                if (linea.equals("---------------------------")) {
+
+                    int idNum = Integer.parseInt(id);
+                    double precioNum = Double.parseDouble(precio);
+
+                    Productos prod = new Productos(idNum, nombre, precioNum, descripcion, imagen);
+                    Nodo<Productos> nodo = new Nodo<>(prod);
+
+                    if (listaVacia()) {
+                        inicio = fin = nodo;
+                        nodo.sig = nodo.ant = nodo;
+                    } else {
+                        nodo.ant = fin;
+                        nodo.sig = inicio;
+                        fin.sig = nodo;
+                        inicio.ant = nodo;
+                        fin = nodo;
+                    }
+
+                    id = nombre = precio = descripcion = imagen = "";
+                }
+            }
+
+            reader.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar: " + e.getMessage());
+        }
+    }
+
+    //buscar 
+    public void buscarEnTXT(int idBuscar) {
+
+        try {
+            File archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                JOptionPane.showMessageDialog(null, "No existe el archivo");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea;
+            boolean encontrado = false;
+            String datos = "";
+
+            while ((linea = reader.readLine()) != null && !encontrado) {
+
+                if (linea.equals("ID: " + idBuscar)) {
+                    encontrado = true;
+                    datos += linea + "\n";
+
+                    while ((linea = reader.readLine()) != null
+                            && !linea.equals("---------------------------")) {
+                        datos += linea + "\n";
+                    }
+                }
+            }
+
+            reader.close();
+
+            if (encontrado) {
+                JOptionPane.showMessageDialog(null, datos);
+            } else {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar: " + e.getMessage());
+        }
+    }
+
+    //mostrar todos los productos
+    public void listarTXT() {
+        try {
+            File archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                JOptionPane.showMessageDialog(null, "No existe el archivo");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea;
+            String datos = "";
+
+            while ((linea = reader.readLine()) != null) {
+                datos += linea + "\n";
+            }
+
+            reader.close();
+            JOptionPane.showMessageDialog(null, datos);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar: " + e.getMessage());
+        }
+    }
+
+    //eliiminar
+    public void eliminarEnTXT(int idEliminar) {
+
+        try {
+            File archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                JOptionPane.showMessageDialog(null, "No existe el archivo");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea;
+
+            StringBuilder nuevoContenido = new StringBuilder();
+            boolean encontrado = false;
+            boolean saltar = false;
+
+            while ((linea = reader.readLine()) != null) {
+
+                //detecta el producto a borrar
+                if (linea.equals("ID: " + idEliminar)) {
+                    encontrado = true;
+                    saltar = true; //se saltan todas sus líneas
+                    continue;
+                }
+
+                //fin del bloque del producto
+                if (saltar && linea.equals("---------------------------")) {
+                    saltar = false;
+                    continue;
+                }
+
+                // si no se salta, s4e copia
+                if (!saltar) {
+                    nuevoContenido.append(linea).append("\n");
+                }
+            }
+
+            reader.close();
+
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
+                return;
+            }
+
+            //reescribir el archivo
+            BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
+            writer.write(nuevoContenido.toString());
+            writer.close();
+
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar: " + e.getMessage());
+        }
+    }
+
+    //edtar, ppor sii acaso
+    public void editarEnTXT(int idEditar, String nuevoNombre, double nuevoPrecio, String nuevaDesc, String nuevaImagen) {
+
+        try {
+            File archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                JOptionPane.showMessageDialog(null, "No existe el archivo");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea;
+
+            StringBuilder nuevoArchivo = new StringBuilder();
+            boolean encontrado = false;
+            boolean saltar = false;
+
+            while ((linea = reader.readLine()) != null) {
+
+                if (linea.equals("ID: " + idEditar)) {
+                    encontrado = true;
+                    saltar = true;
+                    // agregamos el producto EDITADO directamente
+                    nuevoArchivo.append("ID: ").append(idEditar).append("\n");
+                    nuevoArchivo.append("Nombre: ").append(nuevoNombre).append("\n");
+                    nuevoArchivo.append("Precio: ").append(nuevoPrecio).append("\n");
+                    nuevoArchivo.append("Descripción: ").append(nuevaDesc).append("\n");
+                    nuevoArchivo.append("Imagen: ").append(nuevaImagen).append("\n");
+                    nuevoArchivo.append("---------------------------\n");
+                    continue;
+                }
+
+                if (saltar && linea.equals("---------------------------")) {
+                    saltar = false;
+                    continue;
+                }
+
+                if (!saltar) {
+                    nuevoArchivo.append(linea).append("\n");
+                }
+            }
+
+            reader.close();
+
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
+                return;
+            }
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
+            writer.write(nuevoArchivo.toString());
+            writer.close();
+
+            JOptionPane.showMessageDialog(null, "Producto editado correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al editar: " + e.getMessage());
+        }
+    }
+    
 }
