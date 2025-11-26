@@ -32,3 +32,13 @@
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }
+
+.catalogo-box{
+    -fx-background-radius: 5;
+    -fx-background-color:#7D1818;
+}
+
+.item{
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 10;
+}

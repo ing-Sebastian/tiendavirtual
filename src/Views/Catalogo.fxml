@@ -238,6 +238,89 @@
                         </HBox>
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" stylesheets="@../Styles/catalogo.css" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="item">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="180.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/item1.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="14.0" layoutY="190.0" text="99$">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="223.0" text="Ropa delgada mujer femenina" />
+                              <Button layoutX="117.0" layoutY="273.0" mnemonicParsing="false" text="Agregar" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="item">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="180.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/item2.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="14.0" layoutY="187.0" text="50$">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="224.0" text="Ropa delgada mujer femenina" />
+                              <Button layoutX="127.0" layoutY="279.0" mnemonicParsing="false" text="Agregar" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="item">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="180.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/item3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="21.0" layoutY="183.0" text="40$">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="20.0" layoutY="216.0" text="Conjunto negro hombre" />
+                              <Button layoutX="119.0" layoutY="276.0" mnemonicParsing="false" text="Agregar" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="item">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="180.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Images/item4.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="28.0" layoutY="186.0" text="78$">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="217.0" text="Conjunto azul hombre ancho" />
+                              <Button layoutX="116.0" layoutY="279.0" mnemonicParsing="false" text="Agregar" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
