@@ -69,6 +69,20 @@ public class ControllerUsuario {
         return null;
     }
     
+    public int tamaño(){
+        int cant = 0;
+        if (listaVacia())
+            return 0;
+        else{
+            Nodo<Usuario> actual = inicio;
+            do {
+                cant++;
+                actual = actual.sig;
+            } while (actual != inicio);
+        }
+        return cant;
+    }
+    
     //metodo registrar usuario
     public boolean registrarUsuario(TextField jtfNombre, TextField jtfCorreo, TextField jtfContraseña) {
 
