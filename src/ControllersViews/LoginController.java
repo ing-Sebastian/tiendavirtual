@@ -68,6 +68,7 @@ public class LoginController implements Initializable {
             alerta.setHeaderText(null);
             alerta.setContentText("Bienvenido " + u.nombre);
             alerta.showAndWait();
+            abrirCatalogo(event);
         } else {
             alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setHeaderText(null);
@@ -84,11 +85,7 @@ public class LoginController implements Initializable {
         String nombre = jtfNombre.getText();
 
         if(controlador.registrarUsuario(jtfNombre, jtfEmail, jtfContraseña)){
-            Parent root = FXMLLoader.load(getClass().getResource("/Views/Catalogo.fxml"));
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            abrirCatalogo(event);
         }
     }
     
@@ -132,4 +129,18 @@ public class LoginController implements Initializable {
         imageView.setImage(image);
     }    
  
+    public void abrirCatalogo(ActionEvent event){
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/Views/Catalogo.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setHeaderText(null);
+            alerta.setContentText("Error al abrir el catálogo: " + e.getMessage());
+            alerta.showAndWait();
+        }
+    }
 }

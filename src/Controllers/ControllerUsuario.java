@@ -30,10 +30,9 @@ public class ControllerUsuario {
     public ControllerUsuario() {
         this.inicio = null;
         this.fin = null;
-        /*
         //cargar txt al iniciar
         cargarDesdeTXT();
-        */
+        
     }
 
     public boolean listaVacia() {
@@ -289,54 +288,54 @@ public class ControllerUsuario {
     //metodos txt
     //metodo guardar en txt
     public void guardarEnTXT() {
-  if (listaVacia()) {
-        JOptionPane.showMessageDialog(null, "No hay usuarios para guardar");
-        return;
-    }
+        if (listaVacia()) {
+            JOptionPane.showMessageDialog(null, "No hay usuarios para guardar");
+            return;
+        }
 
-    try {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
 
-        writer.write("USUARIOS REGISTRADOS");
-        writer.newLine();
-        writer.write("===================");
-        writer.newLine();
-        writer.newLine();
-
-        Nodo<Usuario> p = inicio;
-
-        do {
-            writer.write("ID: " + p.dato.idUser);
+            writer.write("USUARIOS REGISTRADOS");
             writer.newLine();
-            writer.write("Nombre: " + p.dato.nombre);
-            writer.newLine();
-            writer.write("Correo: " + p.dato.correo);
-            writer.newLine();
-            writer.write("Contraseña: " + p.dato.contraseña);
-            writer.newLine();
-            writer.write("---------------------------");
+            writer.write("===================");
             writer.newLine();
             writer.newLine();
 
-            p = p.sig;
-        } while (p != inicio);
+            Nodo<Usuario> p = inicio;
 
-        writer.close();
+            do {
+                writer.write("ID: " + p.dato.idUser);
+                writer.newLine();
+                writer.write("Nombre: " + p.dato.nombre);
+                writer.newLine();
+                writer.write("Correo: " + p.dato.correo);
+                writer.newLine();
+                writer.write("Contraseña: " + p.dato.contraseña);
+                writer.newLine();
+                writer.write("---------------------------");
+                writer.newLine();
+                writer.newLine();
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error al guardar: " + e.getMessage());
-    }
+                p = p.sig;
+            } while (p != inicio);
+
+            writer.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar: " + e.getMessage());
+        }
     }
 
     //cargar txt
     public void cargarDesdeTXT() {
         try {
-            java.io.File archivo = new java.io.File("C:\\Users\\samue\\Documents\\GitHub\\tiendavirtual\\txtFiles\\usuarios.txt");
-            if (!archivo.exists()) {
-                return;
-            }
+            /*
+            if (!rutaArchivo.exists()) {
+                return; // Sale del método inmediatamente
+            }*/
 
-            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
             String linea;
 
             String id = "", nombre = "", correo = "", contra = "";
