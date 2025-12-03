@@ -29,9 +29,7 @@ public class ControladorCatalogo {
     public ControladorCatalogo() {
         inicio = null;
         fin = null;
-        /*
         cargarDesdeTXT();
-        */
     }
     
     //revisar si es vacia
@@ -56,6 +54,20 @@ public class ControladorCatalogo {
         } while (actual != inicio);
 
         return null;
+    }
+    
+    public int tamaño(){
+        int cant = 0;
+        if (listaVacia())
+            return 0;
+        else{
+            Nodo<Productos> actual = inicio;
+            do {
+                cant++;
+                actual = actual.sig;
+            } while (actual != inicio);
+        }
+        return cant;
     }
 
    
