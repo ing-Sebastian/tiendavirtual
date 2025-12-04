@@ -137,9 +137,16 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
+            // Imprimimos el Stack Trace completo en la consola
+            System.err.println("--- INICIO DE ERROR CRÍTICO AL ABRIR CATÁLOGO ---");
+            e.printStackTrace(); 
+            System.err.println("--- FIN DE ERROR CRÍTICO ---");
+            
             Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setHeaderText(null);
-            alerta.setContentText("Error al abrir el catálogo: " + e.getMessage());
+            alerta.setHeaderText("Error de Carga de Recurso");
+            // Usamos e.getCause() para ver la causa raíz, si existe
+            String mensaje = (e.getCause() != null) ? e.getMessage() + " | Causa: " + e.getCause().getMessage() : e.getMessage();
+            alerta.setContentText("Error al abrir el catálogo: " + mensaje);
             alerta.showAndWait();
         }
     }

@@ -223,9 +223,21 @@
                               </Button>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="302.0">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="147.0">
                            <HBox.margin>
-                              <Insets left="200.0" />
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleAbrirNuevaVentana" prefHeight="38.0" prefWidth="138.0" text="Añadir producto">
+                                 <font>
+                                    <Font name="Segoe UI" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="230.0">
+                           <HBox.margin>
+                              <Insets left="100.0" />
                            </HBox.margin>
                            <children>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -246,9 +258,9 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="1120.0" styleClass="transparent" stylesheets="@../Styles/catalogo.css">
+                        <ScrollPane fx:id="scroll" prefHeight="200.0" prefWidth="1120.0" styleClass="transparent" stylesheets="@../Styles/catalogo.css">
                            <content>
-                              <GridPane prefHeight="9.0" prefWidth="14.0">
+                              <GridPane fx:id="grid" prefHeight="9.0" prefWidth="14.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>

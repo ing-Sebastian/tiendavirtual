@@ -20,7 +20,7 @@ import javafx.scene.layout.Pane;
  * @author Usuario
  */
 public class ItemCatalogoController implements Initializable {
-    
+
     @FXML
     private Button agregarBoton;
 
@@ -38,7 +38,7 @@ public class ItemCatalogoController implements Initializable {
 
     @FXML
     private Label precioLabel;
-    
+
     private Productos producto;
 
     /**
@@ -47,15 +47,31 @@ public class ItemCatalogoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void setData(Productos producto){
+    }
+
+    public void setData(Productos producto) {
         this.producto = producto;
         nombreLabel.setText(producto.nombre);
         descLabel.setText(producto.descripcion);
-        precioLabel.setText("$"+String.valueOf(producto.precio));
-        Image image = new Image(getClass().getResourceAsStream(producto.nombreImagen));
-        imageView.setImage(image);
+        precioLabel.setText("$" + String.valueOf(producto.precio));
+
+        // --- INICIO CORRECCIÓN ---
+        // 1. Crear la ruta completa y correcta. Asumimos que las imágenes están en la carpeta 'images'.
+        String rutaCompleta = "/images/" + producto.nombreImagen;
+
+        java.io.InputStream streamImagen = getClass().getResourceAsStream(rutaCompleta);
+
+        if (streamImagen != null) {
+            // 2. Cargar imagen si la ruta es válida
+            Image image = new Image(streamImagen);
+            imageView.setImage(image);
+        } else {
+            // 3. Manejar error si no se encuentra la imagen
+            System.err.println("❌ ERROR: No se encontró la imagen en la ruta: " + rutaCompleta);
+            // Si no se encuentra, borramos la imagen anterior para evitar mostrar basura.
+            imageView.setImage(null);
+        }
+        // --- FIN CORRECCIÓN ---
     }
-    
+
 }
