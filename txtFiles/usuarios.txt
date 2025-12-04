@@ -1,0 +1,15 @@
+USUARIOS REGISTRADOS
+===================
+
+ID: 1
+Nombre: asado
+Correo: asado
+Contraseña: asado
+---------------------------
+
+ID: 2
+Nombre: sebas
+Correo: sebas
+Contraseña: sebas
+---------------------------
+

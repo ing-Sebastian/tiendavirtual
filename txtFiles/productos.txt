@@ -1,0 +1,6 @@
+ID: 1
+Nombre: Conjunto Mujer
+Precio: 20.0
+Descripción: Conjunto de mujer short y mini blusa
+Imagen: 1764829658196_Conjunto_Mujer.jpg
+---------------------------
